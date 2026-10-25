@@ -11,7 +11,7 @@ Download binaries from [Releases](https://github.com/AlexZeroZero/Gozero-ORU-Min
 | Gozero-ORU-GPU-1.1.1-Setup.exe | Windows 10/11 x64 | NVIDIA SM80+ (Ampere or newer) |
 | gozero-oru-linux-x64-v1.tar.gz | Linux x86_64, glibc 2.38+ | CPU |
 
-The Linux package in this release is a CPU miner, not a GPU miner. The Windows package includes a graphical interface.
+The Windows package includes a graphical interface. A newer Linux GPU core is available separately (see below).
 
 ## Windows
 
@@ -37,3 +37,11 @@ Use your own public address and change `-t` for the desired CPU thread count. Ac
 Compare downloads with `SHA256SUMS.txt`. Corresponding source is included in the release as `Gozero-ORU-GPU-1.1.1-GUI-Source.zip` and `gozero-oru-source-v1.tar.gz`. See the source packages for license notices, dependencies and build instructions. Mining components derived from RIGOR use GPL-2.0-or-later; original notices are preserved.
 
 This repository hosts release downloads and documentation only. It contains no wallet keys, server credentials or production ledger data.
+
+## Linux GPU: RTX 3090 tuned core (2026-10-25)
+
+[Download Linux GPU and source](https://github.com/AlexZeroZero/Gozero-ORU-Miner/releases/tag/linux-gpu-20261025). Ubuntu 24.04 / glibc 2.38+, NVIDIA SM80+. Tested on RTX 3090; approximately 2% higher short kernel benchmark performance. Sustained pool performance and gains on other GPUs are not guaranteed.
+
+Extract the package and fill in your own ORU address and worker in `config.pool.example.json`, or generate the configuration and command at https://pool.gozero.trade/ORU. Run `./rigor-gpu-solo --config config.pool.example.json --ptx kernel.ptx --device 0 --block-size 128 --max-temp 83`. The included placeholder address intentionally cannot mine. Corresponding source, fallback PTX and checksums are included.
+
+[Windows GPU 1.1.1 and Linux CPU v1](https://github.com/AlexZeroZero/Gozero-ORU-Miner/releases/tag/v1.1.1) remain available.
